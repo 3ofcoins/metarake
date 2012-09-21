@@ -1,0 +1,8 @@
+# -*- ruby -*-
+
+%w(one two three).each do |tgt|
+  desc "Create file '#{tgt}'"
+  file tgt do |t|
+    File.open(t.to_s, 'w') { |f| f.puts(tgt.upcase) }
+  end
+end
