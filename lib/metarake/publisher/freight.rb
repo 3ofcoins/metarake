@@ -2,7 +2,7 @@ require 'mixlib/shellout'
 
 # Metarake publisher that pushes `.deb` Debian packages to a Freight
 # apt repository (https://github.com/rcrowley/freight).
-module MetaRake::Publisher::Directory
+module MetaRake::Publisher::Freight
   extend MetaRake::Magic
 
   module ClassMethods
