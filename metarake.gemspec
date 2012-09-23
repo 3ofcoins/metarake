@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["maciej@pasternacki.net"]
   gem.description   = "A Rake extension to build multiple separate projects, published outside the repository"
   gem.summary       = "Rake extension to manage multiple builds"
-  gem.homepage      = "https"
+  gem.homepage      = "https://github.com/3ofcoins/metarake/"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
