@@ -48,6 +48,6 @@ module MetaRake::Publisher::Directory
   def freight_command(cmd)
     cmd = self.class.freight_command || 'freight'
     cmd = cmd.split if cmd.respond_to?(:split)
-    cmd + [ cmd, '-c' self.class.freight_conf_path ]
+    cmd + [ cmd, '-c', self.class.freight_conf_path ]
   end
 end
