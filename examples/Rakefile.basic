@@ -1,0 +1,11 @@
+# -*- ruby -*-
+
+require 'metarake'
+
+class MetaTask < MetaRake::Task
+  include MetaRake::Builder::Rake
+  include MetaRake::Publisher::Directory
+  self.publish_path = "_published"
+end
+
+task :default => MetaTask.discover!

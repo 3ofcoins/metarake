@@ -5,4 +5,6 @@ gemspec
 
 group :development do
   gem "pry"
+  gem "yard"
+  gem "redcarpet"
 end

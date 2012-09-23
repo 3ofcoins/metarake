@@ -16,8 +16,8 @@ Gem::Specification.new do |gem|
   gem.version       = MetaRake::VERSION
 
   gem.add_dependency "rake", ">= 0.9.2"
+  gem.add_dependency "mixlib-shellout"
 
   gem.add_development_dependency "cucumber"
   gem.add_development_dependency 'rspec-expectations'
-  gem.add_development_dependency "mixlib-shellout"
 end

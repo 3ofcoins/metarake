@@ -3,6 +3,20 @@
 Metarake is a Rake extension to build multiple separate projects,
 which are published outside the repository.
 
+Usually, Metarake's Rakefile lives in the directory that contains
+subdirectories with separate projects, each with their own build
+script (`Rakefile`, `Makefile`, `build.xml`, you name it). What
+metarake does, is:
+
+ - Discover the projects,
+ - Discover their build targets,
+ - Verify whether those targets are already published,
+ - Build all unpublished targets and publish them.
+
+Each of these steps can be customized. A sample custom class is
+provided for building Debian packages and publishing them in an Apt
+repository.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -19,7 +33,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Sample rakefiles are included in the `examples/` directory, and
+detailed API documentation can be found at
+http://rdoc.info/github/3ofcoins/metarake/.
 
 ## Contributing
 

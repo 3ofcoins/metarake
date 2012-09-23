@@ -7,10 +7,9 @@ end
 
 Given /^following files:$/ do |table|
   table.hashes.each do |ff|
+    FileUtils::mkdir_p(File.dirname(ff[:path]))
     if ff[:source]
-      FileUtils::cp(
-        File.join(@orig_wd, 'features', 'files', ff[:source]),
-        ff[:path])
+      FileUtils::cp(File.join(@orig_wd, ff[:source]), ff[:path])
     elsif ff[:content]
       File.open(ff[:path], 'w') { |f| f.puts(ff[:content]) }
     else
