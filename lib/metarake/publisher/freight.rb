@@ -37,11 +37,11 @@ module MetaRake::Publisher::Freight
   # Add files to the freight repo and publish them
   def publish!
     self.targets.each do |tgt|
-      sh *(self.freight_command('add') + [
+      sh *(freight_command('add') + [
           File.join(self.to_s, tgt),
           "apt/#{self.class.freight_distro}" ])
     end
-    sh *(self.freight_command('cache'))
+    sh *(freight_command('cache'))
   end
 
   private
