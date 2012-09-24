@@ -43,9 +43,9 @@ module MetaRake::Builder::Rake
   def project_target?(target_name)
     case self.class.target_filter
     when nil    ; true
-    when Regexp ; dir_targets_filter =~ target
-    when Proc   ; dir_targets_filter.call(target)
-    when String ; target.include?(dir_targets_filter)
+    when Regexp ; self.class.target_filter =~ target
+    when Proc   ; self.class.target_filter.call(target)
+    when String ; target.include?(self.class.target_filter)
     end
   end
 
