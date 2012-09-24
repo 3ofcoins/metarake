@@ -45,9 +45,9 @@ module MetaRake::Publisher::Freight
   end
 
   private
-  def freight_command(cmd)
+  def freight_command(subcmd)
     cmd = self.class.freight_command || 'freight'
     cmd = cmd.split if cmd.respond_to?(:split)
-    cmd + [ cmd, '-c', self.class.freight_conf_path ]
+    cmd + [ subcmd, '-c', self.class.freight_conf_path ]
   end
 end
