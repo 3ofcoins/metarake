@@ -16,13 +16,13 @@ module MetaRake::Publisher::Freight
     attr_accessor :freight_command
 
     # @return [Hash] freight config, plus some random shell environment.
-    def freight_conf
-      @freight_conf ||=
+    def freight_varlib
+      @freight_varlib ||=
         begin
           raise ValueError, "#{self}.freight_conf_path is not set" unless freight_conf_path
-          conf = Mixlib::ShellOut.new('env', '-i', '/bin/sh', '-c', ". #{freight_conf_path} ; set")
+          conf = Mixlib::ShellOut.new('env', '-i', '/bin/sh', '-c', ". #{freight_conf_path} ; echo $VARLIB")
           conf.run_command.error!
-          Hash[ conf.stdout.lines.map { |ln| ln.strip.split('=', 2) } ]
+          conf.stdout.strip
         end
     end
   end
@@ -31,7 +31,7 @@ module MetaRake::Publisher::Freight
   def published?
     raise ValueError, "#{self.class}.freight_distro is not set" unless self.class.freight_distro
     self.targets.map { |tgt| File.exist?(File.join(
-          self.class.freight_conf['VARLIB'], 'apt', self.class.freight_distro,
+          self.class.freight_varlib, 'apt', self.class.freight_distro,
           tgt)) }.all?
   end
 
