@@ -31,7 +31,8 @@ module MetaRake::Publisher::Freight
   def published?
     raise ValueError, "#{self.class}.freight_distro is not set" unless self.class.freight_distro
     self.targets.map { |tgt| File.exist?(File.join(
-          self.class.freight_conf['VARLIB'], self.class.freight_distro, tgt)) }.all?
+          self.class.freight_conf['VARLIB'], 'apt', self.class.freight_distro,
+          tgt)) }.all?
   end
 
   # Add files to the freight repo and publish them
