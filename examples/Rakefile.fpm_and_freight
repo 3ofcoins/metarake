@@ -1,0 +1,21 @@
+# -*- ruby -*-
+
+# Use Rake inside subproject directories to build .deb packages, and
+# freight (https://github.com/rcrowley/freight/) to publish them as an
+# apt repository.
+
+require 'metarake'
+require 'metarake/publisher/freight'
+
+class PackagesMetaTask < MetaRake::Task
+  include MetaRake::Builder::Rake
+  include MetaRake::Publisher::Freight
+
+  self.target_filter = /\.deb$/
+  self.rake_command = 'fakeroot bundle exec rake'
+  self.freight_distro = ENV['FREIGHT_DISTRO'] || 'squeeze'
+  self.freight_conf_path = ENV['FREIGHT_CONF'] || 'freight.conf'
+  self.freight_command = ENV['FREIGHT_COMMAND'] || 'freight'
+end
+
+task :default => PackagesMetaTask.discover!
