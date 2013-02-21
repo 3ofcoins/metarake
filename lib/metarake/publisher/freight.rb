@@ -19,7 +19,7 @@ module MetaRake::Publisher::Freight
     def freight_varlib
       @freight_varlib ||=
         begin
-          raise ValueError, "#{self}.freight_conf_path is not set" unless freight_conf_path
+          raise "#{self}.freight_conf_path is not set" unless freight_conf_path
           conf = Mixlib::ShellOut.new('env', '-i', '/bin/sh', '-c', ". #{freight_conf_path} ; echo $VARLIB")
           conf.run_command.error!
           conf.stdout.strip
@@ -29,7 +29,7 @@ module MetaRake::Publisher::Freight
 
   # True if all project targets are added to the repository
   def published?
-    raise ValueError, "#{self.class}.freight_distro is not set" unless self.class.freight_distro
+    raise "#{self.class}.freight_distro is not set" unless self.class.freight_distro
     self.targets.map { |tgt| File.exist?(File.join(
           self.class.freight_varlib, 'apt', self.class.freight_distro,
           tgt)) }.all?
