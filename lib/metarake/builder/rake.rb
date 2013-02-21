@@ -11,9 +11,13 @@ module MetaRake::Builder::Rake
     # @see Metarake::Builder::Rake#project_target?
     attr_accessor :target_filter
 
+    # Glob to find projects' Rakefiles (default: `['*/Rakefile']`)
+    attr_accessor :rakefile_glob
+
     # Projects are subdirectories that have a Rakefile.
     def projects
-      Dir['*/Rakefile'].map { |rakefile| File.dirname(rakefile) }
+      glob = rakefile_glob || ['*/Rakefile']
+      Dir[*glob].map { |rakefile| File.dirname(rakefile) }
     end
   end
 
