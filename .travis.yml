@@ -1,7 +1,15 @@
+---
 language: ruby
 rvm:
-  - 1.8.7
-  - 1.9.2
-  - 1.9.3
-  - rbx-18mode
-  - rbx-19mode
+- 1.8.7
+- 1.9.2
+- 1.9.3
+- rbx-18mode
+- rbx-19mode
+notifications:
+  hipchat:
+    secure: ! 'ZAdBBFtGO9VDWtE96hmDdQGwXxknji9CAETxhjdvTsanwA/OMN9wvv/cas8h
+
+      Q3Cz7XNemymVbPomNh3NHXik6wp7KLZyGOJMM4XZsmQwV+uvaVDpjHZYASZi
+
+      2gWW1MmCRDE5DsVRvU05pq6sXgub+6sCvxHh5NburaSp4DCeNE0='
